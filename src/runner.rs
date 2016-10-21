@@ -107,7 +107,7 @@ impl Runner for FirefoxRunner {
     }
 
     fn build_command(&self, command: &mut Command) {
-        command.args(&self.args[..]).arg("--marionette").arg("--profile").arg(&self.profile.path)
+        command.arg("--marionette").arg("--profile").arg(&self.profile.path).args(&self.args[..])
             .stdout(Stdio::inherit()).stderr(Stdio::inherit())
             .env("MOZ_NO_REMOTE", "1").env("NO_EM_RESTART", "1");
     }
