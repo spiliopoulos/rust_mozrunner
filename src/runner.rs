@@ -110,6 +110,7 @@ impl Runner for FirefoxRunner {
         command.arg("--marionette").arg("--profile").arg(&self.profile.path).args(&self.args[..])
             .stdout(Stdio::inherit()).stderr(Stdio::inherit())
             .env("MOZ_NO_REMOTE", "1").env("NO_EM_RESTART", "1");
+        println!("The command is: {:#?}", command);
     }
 
     fn is_running(&self) -> bool {
